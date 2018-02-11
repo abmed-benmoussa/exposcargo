@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Catalogdetail" table="catalogdetail">
+    <indexes>
+      <index name="IDX_1D2DF2B6C4286029" columns="idcatalog"/>
+    </indexes>
+    <id name="iddetail" type="string" column="iddetail" length="32"/>
+    <id name="idcatalog" association-key="true"/>
+    <field name="description" type="string" column="description" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <one-to-one field="idcatalog" target-entity="Catalog" fetch="LAZY">
+      <join-columns>
+        <join-column name="idcatalog" referenced-column-name="idcatalog"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

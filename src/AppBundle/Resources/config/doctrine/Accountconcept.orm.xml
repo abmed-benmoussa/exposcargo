@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Accountconcept" table="accountconcept">
+    <indexes>
+      <index name="IDX_394D49A03356D6B4" columns="idbudgetconcept"/>
+    </indexes>
+    <id name="idaccountconcept" type="integer" column="idaccountconcept">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="accountconcept_idaccountconcept_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="idperson" type="integer" column="idperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idproject" type="integer" column="idproject" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idoperator" type="integer" column="idoperator" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="timestamp" type="datetime" column="timestamp" nullable="false"/>
+    <field name="totalamt" type="decimal" column="totalamt" precision="18" scale="2" nullable="false"/>
+    <field name="reference" type="string" column="reference" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="exchangetype" type="decimal" column="exchangetype" precision="18" scale="6" nullable="false"/>
+    <field name="comment" type="string" column="comment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idcurrency" type="integer" column="idcurrency" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idbudgetconcept" target-entity="Budgetconcept" fetch="LAZY">
+      <join-columns>
+        <join-column name="idbudgetconcept" referenced-column-name="idbudgetconcept"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

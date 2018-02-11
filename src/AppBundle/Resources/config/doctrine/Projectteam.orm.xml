@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Projectteam" table="projectteam">
+    <indexes>
+      <index name="IDX_1BF06506F0B78280" columns="idproject"/>
+      <index name="IDX_1BF065065E5C27E9" columns="iduser"/>
+    </indexes>
+    <id name="idprojectteam" type="integer" column="idprojectteam">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="projectteam_idprojectteam_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="comment" type="string" column="comment" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="iduser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="iduser" referenced-column-name="iduser"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

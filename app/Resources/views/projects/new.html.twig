@@ -1,0 +1,385 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EXPOS cargo | Logistics Management System{% endblock %}
+
+{% block stylesheets %}
+
+        <meta name="description" content="Latest updates and statistic charts">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+        <script>
+              WebFont.load({
+                google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+                active: function() {
+                    sessionStorage.fonts = true;
+                }
+              });
+        </script>
+
+        <link href="{{ asset('assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/vendors/custom/jquery-ui/jquery-ui.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/base/style.bundle-NEW.css') }}" rel="stylesheet" type="text/css" />
+
+        <link rel="shortcut icon" href="{{ asset('assets/media/img/logo/favicon.ico') }}" />
+
+{% endblock %}
+
+{% use 'header.html.twig' %}
+
+{% block body %}
+
+<!-- begin::Body -->
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body">
+				<div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver m-container m-container--responsive m-container--xxl m-page__container">
+					<div class="m-grid__item m-grid__item--fluid m-wrapper">
+						<div class="m-content">
+<!--Begin::Main Portlet-->
+                            <div class="m-portlet">
+<!--begin::Form-->
+                                    <div class="m-portlet__head">
+                                            <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                            <span class="m-portlet__head-icon">
+                                                                    <i class="flaticon-add"></i>
+                                                            </span>
+                                                            <h3 class="m-portlet__head-text">
+                                                                    Add project
+                                                            </h3>
+                                                    </div>
+                                            </div>
+                                            <div class="m-portlet__head-tools">
+                                                    <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
+                                                            <span class="btn m-btn--pill btn-secondary active" type="but">
+											<?php
+												$currentWeekNumber = date('W');
+												echo 'Week &nbsp;' . $currentWeekNumber;
+												echo '&nbsp; &mdash; '
+											?>
+
+                                                                    Week &nbsp;01												<span class="m-subheader__daterange-title"></span>
+                                                                    <span class="m-subheader__daterange-date m--font-brand"></span>
+                                                            </span>
+                                                    </span>
+                                                    <button class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle" data-toggle="modal" data-target="#m_modal" style="margin-left: 25px; " >
+                                                            <i class="la la-plus m--hide"></i>
+                                                            <i class="fa flaticon-menu-button"></i>
+                                                    </button>
+                                            </div>
+                                    </div>
+
+        <form id="from01" class="m-form m-form--fit m-form--label-align-right ">
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group row m-row--col-separator-xl">
+                    <div class="col-lg-4">
+                        <label class="m--font-brand">
+                            Company name
+                        </label>
+                        <div class="input-group m-input-group m-input-group--square">
+                            <span class="input-group-addon">
+                                <i class="fa flaticon-suitcase "></i>
+                            </span>
+                            <div class="m-typeahead">
+                                <input type="text" id="companyname" class="form-control m-input m-input--air" placeholder="Company name" style="width: 100%">
+                            </div>
+                        </div>
+                        <label style="margin-top: 10px; " class="m--font-brand">
+                            Phone number
+                        </label>
+                        <div class="input-group m-input-group m-input-group--square">
+                            <span class="input-group-addon">
+                                <i class="la la-phone "></i>
+                            </span>
+                            <input type="text" id="phonenumber" class="form-control m-input m-input--air" placeholder="Phone number">
+                            &nbsp;&nbsp;
+                            <a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+                                <i class="la la-plus m--hide"></i>
+                                <i class="la la-plus "></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="m--font-brand">
+                            Contact name
+                        </label>
+                        <div class="input-group m-input-group m-input-group--square">
+                            <span class="input-group-addon">
+                                <i class="fa flaticon-suitcase "></i>
+                            </span>
+                            <input type="text" id="contactname" class="form-control m-input m-input--air" placeholder="Contact name" style="width: 100%">
+                        </div>
+                        <label style="margin-top: 10px; " class="m--font-brand">
+                            Email
+                        </label>
+                        <div class="input-group m-input-group m-input-group--square">
+                            <span class="input-group-addon">
+                                <i class="la  la-envelope "></i>
+                            </span>
+                            <input type="text" id="email" class="form-control m-input m-input--air" placeholder="Email">
+                        </div>
+                        <label style="margin-top: 10px; " class="m--font-brand" >
+                            Phone number
+                        </label>
+                        <div class="input-group m-input-group m-input-group--square">
+                            <span class="input-group-addon">
+                                <i class="la la-phone "></i>
+                            </span>
+                            <input type="text" id="contactphonenumber" class="form-control m-input m-input--air" placeholder="Phone number">
+                            &nbsp;&nbsp;
+                            <a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+                                <i class="la la-plus m--hide"></i>
+                                <i class="la la-plus "></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="m--font-brand">
+                            Project type
+                        </label>
+                        <div class="m-radio-inline">
+                            <label class="m-radio m-radio--solid">
+                                <input type="radio" id="rcommercial" checked name="projecttype" value="2">
+                                Commercial
+                                <span></span>
+                            </label>
+                            <label class="m-radio m-radio--solid">
+                                <input type="radio" id="rcorporation" name="projecttype" checked value="1">
+                                Corporation
+                                <span></span>
+                            </label>
+                            <label class="m-radio m-radio--solid">
+                                <input type="radio" id="rpersonal" name="projecttype" value="4">
+                                Personal
+                                <span></span>
+                            </label>
+                            <label class="m-radio m-radio--solid">
+                                <input type="radio" id="rretrieval" name="projecttype" value="5">
+                                Retrieval
+                                <span></span>
+                            </label>
+                            <label class="m-radio m-radio--solid">
+                                <input type="radio" id="rwedding" name="projecttype" value="6">
+                                Wedding
+                                <span></span>
+                            </label>
+                        </div>
+                        <span class="m-form__help">
+                            You can select several options
+                        </span>
+                        <hr>
+                        <label class="m--font-brand">
+                            Other concepts
+                        </label>
+                        <div class="m-radio-inline">
+                            <label class="m-radio m-radio--solid">
+                                <input type="checkbox" id="tmultiparticipant" name="multiparticipant" value="3">
+                                Multi-participant
+                                <span></span>
+                            </label>
+                            <label class="m-radio m-radio--solid">
+                                <input type="checkbox" id="tconsult" name="consult" value="2">
+                                Query
+                                <span></span>
+                            </label>
+                        </div>
+                        <hr>
+                        <div class="row m-row--col-separator-xl">
+                            <div class="col-lg-6">
+                                <label class="m--font-brand">
+                                    Departure country
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="fa flaticon-paper-plane "></i>
+                                    </span>
+                                    <div class="m-typeahead">
+                                        <input type="text" id="departure_country" class="form-control m-input m-input--air" style="width: 100%" placeholder="Departure country">
+                                    </div>
+                                </div>
+                                <label style="margin-top: 10px; " class="m--font-brand">
+                                    Departure city
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="la la-bus "></i>
+                                    </span>
+                                    <input type="text" id="departure_city" class="form-control m-input m-input--air" placeholder=""  style="width: 100%">
+                                </div>
+                                <label style="margin-top: 10px; " class="m--font-brand">
+                                    Departure ZIPcode
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="fa flaticon-pin "></i>
+                                    </span>
+                                    <input type="text" id="departure_postcode" class="form-control m-input m-input--air" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="m--font-brand">
+                                    Delivery country
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="fa flaticon-paper-plane fa-flip-vertical "></i>
+                                    </span>
+                                    <div class="m-typeahead">
+                                        <input type="text" id="delivery_country" class="form-control m-input m-input--air" style="width: 100%" placeholder="Delivery country">
+                                    </div>
+                                </div>
+                                <label style="margin-top: 10px; " class="m--font-brand">
+                                    Delivery city
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="la la-bus "></i>
+                                    </span>
+                                    <input type="text" id="delivery_city" name="delivery_city" class="form-control m-input m-input--air" placeholder="" style="width: 100%">
+                                </div>
+                                <label style="margin-top: 10px; " class="m--font-brand">
+                                    Delivery ZIPcode
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="fa flaticon-pin"></i>
+                                    </span>
+                                    <input type="text" id="delivery_postcode" name="delivery_postcode" class="form-control m-input m-input--air" placeholder="">
+                                </div>
+                                <label style="margin-top: 10px; " class="m--font-brand">
+                                    Delivery date
+                                </label>
+                                <div class="input-group m-input-group m-input-group--square">
+                                    <span class="input-group-addon">
+                                        <i class="fa flaticon-calendar "></i>
+                                    </span>
+                                    <input type="text" id="delivery_date" name="delivery_date" class="form-control m-input m-input--air" placeholder="" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+                <div class="m-form__actions m-form__actions--solid">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-8">
+                            <button type="button" id="bok" onclick="javascript: copydat();" class="btn btn-primary" data-toggle="modal" data-target="#add_keycode">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-secondary"  data-target="/">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+<!--end::Form-->
+                            </div>
+<!--End::Main Portlet-->
+						</div>
+
+                            <form id="form02" action="/projects/save" method="POST">
+
+						<div class="modal fade" id="add_keycode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">
+											Project keycode
+										</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												&times;
+											</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="input-group m-input-group m-input-group--square" style="margin-bottom: 5px; ">
+											<span class="input-group-addon">
+												<i class="la  la-qrcode "></i>
+											</span>
+											<input type="text" id="projectcode" name="projectcode" class="form-control m-input m-input--air" placeholder="">
+										</div>
+										<span class="m-form__help">
+											Press "Submit" or edit if is neccesary</span>
+										</span>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">
+											Close
+										</button>
+										<button type="submit" class="btn btn-primary">
+											Submit
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+<input type="hidden" name="ycompanyname" id="ycompanyname">
+<input type="hidden" name="yphonenumber" id="yphonenumber">
+<input type="hidden" name="ycontactname" id="ycontactname">
+<input type="hidden" name="yemail" id="yemail">
+<input type="hidden" name="ycontactphonenumber" id="ycontactphonenumber">
+
+<input type="hidden" name="yprojecttype" id="yprojecttype">
+
+<input type="hidden" name="ytmultiparticipant" id="ytmultiparticipant">
+<input type="hidden" name="ytconsult" id="ytconsult">
+
+<input type="hidden" name="ydeparture_country" id="ydeparture_country">
+<input type="hidden" name="ydeparture_city" id="ydeparture_city">
+<input type="hidden" name="ydeparture_postcode" id="ydeparture_postcode">
+<input type="hidden" name="ydelivery_country" id="ydelivery_country">
+<input type="hidden" name="ydelivery_city" id="ydelivery_city">
+<input type="hidden" name="ydelivery_postcode" id="ydelivery_postcode">
+<input type="hidden" name="ydelivery_date" id="ydelivery_date">
+
+
+                            </form>
+						<!--end::Modal-->
+
+					</div>
+				</div>
+			</div>
+<!-- end::Body -->
+{% endblock %}
+
+{% block footer %}
+
+    {% use 'footer.html.twig' %}
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+<!--begin::Base Scripts -->
+    <script src="{{ asset('assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/base/scripts.bundle.js') }}" type="text/javascript"></script>
+<!--end::Base Scripts -->
+
+<!--begin::Page Resources -->
+    <script src="{{ asset('assets/custom/components/forms/widgets/dropzone.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/custom/components/forms/widgets/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/custom/components/forms/widgets/typeahead.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/custom/components/forms/widgets/xproject.js') }}" type="text/javascript"></script>
+
+<!--end::Page Resources -->
+
+<!--begin::Page Vendors -->
+    <script src="{{ asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/custom/jquery-ui/jquery-ui.bundle.js') }}" type="text/javascript"></script>
+<!--end::Page Vendors -->
+
+<!--begin::Page Snippets -->
+    <script src="{{ asset('assets/custom/components/portlets/draggable.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/app/js/dashboard.js') }}" type="text/javascript"></script>
+<!--end::Page Snippets -->
+
+{% endblock %}

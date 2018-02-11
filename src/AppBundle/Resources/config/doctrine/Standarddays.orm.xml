@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Standarddays" table="standarddays">
+    <id name="idstandarddays" type="integer" column="idstandarddays">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="standarddays_idstandarddays_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="departureidlocation" type="integer" column="departureidlocation" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="deliveryidlocation" type="integer" column="deliveryidlocation" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="transportation" type="integer" column="transportation" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="days" type="integer" column="days" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Tasks" table="tasks">
+    <indexes>
+      <index name="IDX_50586597F0B78280" columns="idproject"/>
+      <index name="IDX_50586597856A684C" columns="parentid"/>
+    </indexes>
+    <id name="idtask" type="integer" column="idtask">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tasks_idtask_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="timecreated" type="datetime" column="timecreated" nullable="false"/>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="makeidperson" type="integer" column="makeidperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="assigatedidperson" type="integer" column="assigatedidperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="startdate" type="datetime" column="startdate" nullable="false"/>
+    <field name="enddate" type="datetime" column="enddate" nullable="true"/>
+    <field name="comment" type="string" column="comment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="parentid" target-entity="Tasks" fetch="LAZY">
+      <join-columns>
+        <join-column name="parentid" referenced-column-name="idtask"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

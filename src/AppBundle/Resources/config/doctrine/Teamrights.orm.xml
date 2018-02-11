@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Teamrights" table="teamrights">
+    <indexes>
+      <index name="IDX_4C5E74DFE22715EA" columns="idprocedure"/>
+      <index name="IDX_4C5E74DF172F57BF" columns="idteam"/>
+    </indexes>
+    <id name="idteamrights" type="integer" column="idteamrights">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="teamrights_idteamrights_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="comment" type="string" column="comment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idteam" target-entity="Team" fetch="LAZY">
+      <join-columns>
+        <join-column name="idteam" referenced-column-name="idteam"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idprocedure" target-entity="Procedures" fetch="LAZY">
+      <join-columns>
+        <join-column name="idprocedure" referenced-column-name="idprocedure"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

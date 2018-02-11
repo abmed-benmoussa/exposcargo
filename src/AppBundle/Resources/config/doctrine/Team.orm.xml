@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Team" table="team">
+    <id name="idteam" type="integer" column="idteam">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="team_idteam_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="name" type="string" column="name" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="leaderiduser" type="integer" column="leaderiduser" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="leadersince" type="datetime" column="leadersince" nullable="true"/>
+    <field name="leaderuntil" type="datetime" column="leaderuntil" nullable="true"/>
+  </entity>
+</doctrine-mapping>

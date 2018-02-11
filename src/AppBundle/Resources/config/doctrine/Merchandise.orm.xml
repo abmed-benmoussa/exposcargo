@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Merchandise" table="merchandise">
+    <indexes>
+      <index name="IDX_D043D1A41BF4DEF0" columns="idboxes"/>
+    </indexes>
+    <id name="idmerchandise" type="integer" column="idmerchandise">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="merchandise_idmerchandise_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="classification" type="integer" column="classification" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="quantity" type="integer" column="quantity" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="brand" type="string" column="brand" length="64" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idboxes" target-entity="Boxes" fetch="LAZY">
+      <join-columns>
+        <join-column name="idboxes" referenced-column-name="idboxes"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

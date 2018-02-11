@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Merchandisedetail" table="merchandisedetail">
+    <indexes>
+      <index name="IDX_1C36B8611682A10B" columns="idmerchandise"/>
+    </indexes>
+    <id name="idmerchandisedetail" type="integer" column="idmerchandisedetail">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="merchandisedetail_idmerchandisedetail_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="exportrestrictions" type="integer" column="exportrestrictions" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idmerchandise" target-entity="Merchandise" fetch="LAZY">
+      <join-columns>
+        <join-column name="idmerchandise" referenced-column-name="idmerchandise"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

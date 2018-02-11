@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Person" table="person">
+    <indexes>
+      <index name="IDX_34DCD176856A684C" columns="parentid"/>
+    </indexes>
+    <id name="idperson" type="integer" column="idperson">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="person_idperson_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="fullname" type="string" column="fullname" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="taxid" type="string" column="taxid" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="255" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="logo" type="string" column="logo" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="url" type="string" column="url" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="financialcategory" type="integer" column="financialcategory" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="behaivorcategory" type="integer" column="behaivorcategory" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="performstaxexemption" type="boolean" column="performstaxexemption" nullable="false"/>
+    <field name="averagereleasetime" type="integer" column="averagereleasetime" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="evaluation" type="boolean" column="evaluation" nullable="false"/>
+    <field name="evaluationdate" type="date" column="evaluationdate" nullable="false"/>
+    <field name="evaluatoridperson" type="integer" column="evaluatoridperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="identificationtype" type="string" column="identificationtype" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificationnumber" type="string" column="identificationnumber" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="birthdate" type="date" column="birthdate" nullable="false"/>
+    <field name="personality" type="string" column="personality" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="job" type="string" column="job" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="parentid" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="parentid" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

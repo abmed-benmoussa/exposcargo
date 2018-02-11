@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Country" table="country">
+    <id name="idcountry" type="integer" column="idcountry">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="country_idcountry_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="fullname" type="string" column="fullname" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idregion" type="string" column="idregion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idcc1" type="string" column="idcc1" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idisoalpha2" type="string" column="idisoalpha2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idisoalpha3" type="string" column="idisoalpha3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idiso4217" type="string" column="idiso4217" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idphonecc" type="string" column="idphonecc" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idiso6391" type="string" column="idiso6391" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,27 @@
+
+{
+    "meta": {
+        "page": 1,
+        "pages": 1,
+        "perpage": -1,
+        "total": {{ xtable|length }},
+        "sort": "asc",
+        "field": "idteam"
+    },
+    "data": [
+{% for rec in xtable %}
+{% if not loop.first %},
+{% endif %}
+    {
+{% for cmp in xcmps %}
+{% if not loop.first %},
+{% endif %}
+"{{cmp}}":{% if attribute(rec, cmp).timezone is defined and attribute(rec, cmp).nonExistingProperty is not defined %}"{{ attribute(rec, cmp)|date('Y-m-d') }}"{% else %}"{{ attribute(rec, cmp)|trim }}"{% endif %}
+{% endfor %}
+
+}{% endfor %}
+
+]
+}
+
+

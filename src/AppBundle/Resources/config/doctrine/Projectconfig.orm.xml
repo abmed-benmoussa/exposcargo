@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Projectconfig" table="projectconfig">
+    <id name="idproject" association-key="true"/>
+    <field name="projecttype" type="integer" column="projecttype" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="shipmenttype" type="integer" column="shipmenttype" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consolidator" type="integer" column="consolidator" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="servicespickup" type="integer" column="servicespickup" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="servicesinsurance" type="integer" column="servicesinsurance" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="servicestaged" type="integer" column="servicestaged" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="servicescheck" type="integer" column="servicescheck" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="servicesdelivery" type="integer" column="servicesdelivery" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="servicesgifts" type="integer" column="servicesgifts" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mandatoryfields" type="string" column="mandatoryfields" length="512" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <one-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

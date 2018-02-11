@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Customsdocuments" table="customsdocuments">
+    <id name="idcustomsdoc" type="integer" column="idcustomsdoc">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="customsdocuments_idcustomsdoc_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="customsdocnumber" type="string" column="customsdocnumber" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idcountry" type="integer" column="idcountry" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="date" type="date" column="date" nullable="false"/>
+    <field name="arrivaldate" type="date" column="arrivaldate" nullable="false"/>
+    <field name="originalcustomsdocnumber" type="string" column="originalcustomsdocnumber" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mustreturn" type="integer" column="mustreturn" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="agentidperson" type="integer" column="agentidperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="customscomment" type="string" column="customscomment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="doccomment" type="string" column="doccomment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="importer" type="string" column="importer" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="authorization" type="string" column="authorization" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cost" type="decimal" column="cost" precision="18" scale="2" nullable="false"/>
+    <field name="vat" type="decimal" column="vat" precision="18" scale="2" nullable="false"/>
+    <field name="importtaxes" type="decimal" column="importtaxes" precision="18" scale="2" nullable="false"/>
+    <field name="duties" type="decimal" column="duties" precision="18" scale="2" nullable="false"/>
+    <field name="storage" type="decimal" column="storage" precision="18" scale="2" nullable="false"/>
+    <field name="additionalcost" type="decimal" column="additionalcost" precision="18" scale="2" nullable="false"/>
+    <field name="providerinvoice" type="string" column="providerinvoice" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

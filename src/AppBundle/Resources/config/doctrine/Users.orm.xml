@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Users" table="users">
+    <indexes>
+      <index name="IDX_1483A5E984A67BCA" columns="idrole"/>
+      <index name="IDX_1483A5E950617CDA" columns="idperson"/>
+      <index name="IDX_1483A5E9172F57BF" columns="idteam"/>
+      <index name="IDX_1483A5E9856A684C" columns="parentid"/>
+    </indexes>
+    <id name="iduser" type="integer" column="iduser">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="users_iduser_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="username" type="string" column="username" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="password" type="string" column="password" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="parentid" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="parentid" referenced-column-name="iduser"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idteam" target-entity="Team" fetch="LAZY">
+      <join-columns>
+        <join-column name="idteam" referenced-column-name="idteam"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="idperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idrole" target-entity="Role" fetch="LAZY">
+      <join-columns>
+        <join-column name="idrole" referenced-column-name="idrole"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

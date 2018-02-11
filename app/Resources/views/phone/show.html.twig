@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Phone</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Type</th>
+                <td>{{ phone.type }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ phone.number }}</td>
+            </tr>
+            <tr>
+                <th>Ext</th>
+                <td>{{ phone.ext }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ phone.comment }}</td>
+            </tr>
+            <tr>
+                <th>Idphone</th>
+                <td>{{ phone.idphone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('phone_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('phone_edit', { 'idphone': phone.idphone }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

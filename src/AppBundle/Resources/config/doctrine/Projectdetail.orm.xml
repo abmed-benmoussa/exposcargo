@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Projectdetail" table="projectdetail">
+    <indexes>
+      <index name="IDX_B76B9A91F0B78280" columns="idproject"/>
+      <index name="IDX_B76B9A911944FFA" columns="referidperson"/>
+      <index name="IDX_B76B9A913E16D09E" columns="referrepidperson"/>
+      <index name="IDX_B76B9A91E0DEFF0" columns="requestidperson"/>
+      <index name="IDX_B76B9A911455C24E" columns="requestrepidperson"/>
+      <index name="IDX_B76B9A9194E16A79" columns="venueidperson"/>
+      <index name="IDX_B76B9A914344242D" columns="venueidplace"/>
+    </indexes>
+    <id name="idprojectdetail" type="integer" column="idprojectdetail">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="projectdetail_idprojectdetail_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="referercomission" type="decimal" column="referercomission" precision="10" scale="0" nullable="true"/>
+    <field name="comissiontype" type="integer" column="comissiontype" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="venueidperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="venueidperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="venueidplace" target-entity="Location" fetch="LAZY">
+      <join-columns>
+        <join-column name="venueidplace" referenced-column-name="idlocation"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="requestrepidperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="requestrepidperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="requestidperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="requestidperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="referidperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="referidperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="referrepidperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="referrepidperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

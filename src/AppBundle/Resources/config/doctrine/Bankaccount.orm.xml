@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Bankaccount" table="bankaccount">
+    <indexes>
+      <index name="IDX_A4609E5A856A684C" columns="parentid"/>
+      <index name="IDX_A4609E5A50617CDA" columns="idperson"/>
+    </indexes>
+    <id name="idbankaccount" type="integer" column="idbankaccount">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="bankaccount_idbankaccount_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idbank" type="integer" column="idbank" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="accountnumber" type="string" column="accountnumber" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="accounttype" type="string" column="accounttype" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="clabe" type="string" column="clabe" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="abacode" type="string" column="abacode" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="swiftcode" type="string" column="swiftcode" length="35" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idcurrency" type="integer" column="idcurrency" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="idperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="parentid" target-entity="Bankaccount" fetch="LAZY">
+      <join-columns>
+        <join-column name="parentid" referenced-column-name="idbankaccount"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

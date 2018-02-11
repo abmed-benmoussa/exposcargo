@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/media/img/logo/favicon.ico') }}" />
+    </head>
+    <body class="m-page--wide m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default"  >
+
+    <!-- begin:: Page -->
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+
+        {% block header %}{% endblock %}
+
+        {% block body %}{% endblock %}
+
+        {% block footer %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

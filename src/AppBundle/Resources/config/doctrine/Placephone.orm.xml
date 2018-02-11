@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Placephone" table="placephone">
+    <indexes>
+      <index name="IDX_D3DF972A924AFBC4" columns="idphone"/>
+      <index name="IDX_D3DF972AF44BC1C6" columns="idlocation"/>
+    </indexes>
+    <id name="idplacephone" type="integer" column="idplacephone">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="placephone_idplacephone_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <many-to-one field="idlocation" target-entity="Location" fetch="LAZY">
+      <join-columns>
+        <join-column name="idlocation" referenced-column-name="idlocation"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idphone" target-entity="Phone" fetch="LAZY">
+      <join-columns>
+        <join-column name="idphone" referenced-column-name="idphone"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

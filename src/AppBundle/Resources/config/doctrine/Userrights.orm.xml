@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Userrights" table="userrights">
+    <indexes>
+      <index name="IDX_699AC6C7E22715EA" columns="idprocedure"/>
+      <index name="IDX_699AC6C75E5C27E9" columns="iduser"/>
+    </indexes>
+    <id name="iduserright" type="integer" column="iduserright">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="userrights_iduserright_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <many-to-one field="iduser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="iduser" referenced-column-name="iduser"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idprocedure" target-entity="Procedures" fetch="LAZY">
+      <join-columns>
+        <join-column name="idprocedure" referenced-column-name="idprocedure"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

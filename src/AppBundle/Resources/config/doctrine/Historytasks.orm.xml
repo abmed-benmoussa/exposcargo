@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Historytasks" table="historytasks">
+    <indexes>
+      <index name="IDX_64865F081B12A85" columns="idtask"/>
+    </indexes>
+    <id name="idhistorytasks" type="integer" column="idhistorytasks">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="historytasks_idhistorytasks_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <many-to-one field="idtask" target-entity="Tasks" fetch="LAZY">
+      <join-columns>
+        <join-column name="idtask" referenced-column-name="idtask"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

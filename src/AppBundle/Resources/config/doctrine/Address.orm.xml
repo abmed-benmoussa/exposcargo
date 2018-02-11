@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Address" table="address">
+    <id name="idaddress" type="integer" column="idaddress">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="address_idaddress_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="address1" type="string" column="address1" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="address2" type="string" column="address2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="zipcode" type="string" column="zipcode" length="16" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="latitude" type="decimal" column="latitude" precision="18" scale="9" nullable="false"/>
+    <field name="longitude" type="decimal" column="longitude" precision="18" scale="9" nullable="false"/>
+    <field name="comment" type="string" column="comment" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

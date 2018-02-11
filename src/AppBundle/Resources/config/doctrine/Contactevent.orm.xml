@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Contactevent" table="contactevent">
+    <indexes>
+      <index name="IDX_4E74F84363491F5B" columns="idcompanyevent"/>
+    </indexes>
+    <id name="idcontactevent" type="integer" column="idcontactevent">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="contactevent_idcontactevent_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="contactname" type="string" column="contactname" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="phone" type="string" column="phone" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idcompanyevent" target-entity="Companyevent" fetch="LAZY">
+      <join-columns>
+        <join-column name="idcompanyevent" referenced-column-name="idcompanyevent"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

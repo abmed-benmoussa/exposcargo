@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Attachmentmediafiles" table="attachmentmediafiles">
+    <indexes>
+      <index name="IDX_A3131CAF1BF4DEF0" columns="idboxes"/>
+    </indexes>
+    <id name="idmediafile" type="integer" column="idmediafile">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="attachmentmediafiles_idmediafile_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="storaged" type="datetime" column="storaged" nullable="false"/>
+    <field name="filepath" type="string" column="filepath" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="filemimetype" type="string" column="filemimetype" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="iduser" type="integer" column="iduser" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idboxes" target-entity="Boxes" fetch="LAZY">
+      <join-columns>
+        <join-column name="idboxes" referenced-column-name="idboxes"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

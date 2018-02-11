@@ -1,0 +1,303 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EXPOS cargo | Logistics Management System{% endblock %}
+
+{% block stylesheets %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+        WebFont.load({
+          google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+          active: function() {
+              sessionStorage.fonts = true;
+          }
+        });
+    </script>
+
+    <link href="{{ asset('assets/vendors/custom/jquery-ui/jquery-ui.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/base/style.bundle-NEW.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('assets/demo/default/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" href="{{ asset('assets/media/img/logo/favicon.ico')}} " />
+
+{% endblock %}
+
+{% use 'header.html.twig' %}
+
+{% block body %}
+
+               <div class="page-content-wrapper">
+
+					<!-- BEGIN CONTENT BODY -->
+                    <div class="page-content">
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a href="../profiles">Dashboard</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <a href="index">Projects</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <span>ADD Project</span>
+                                </li>
+                            </ul>
+                            <div class="page-toolbar">
+                                <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom"
+									data-original-title="Change dashboard date range">
+									<strong>
+										WEEK 49									</strong>
+                                    &nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;
+                                    <span class="thin uppercase hidden-xs"></span>&nbsp;
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </div>
+						</div>
+
+                        <!-- BEGIN PAGE CONTENT-->
+						<div class="portlet box green">
+
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="icon-plus"></i> ADD Project
+								</div>
+							</div>
+							<div class="portlet-body">
+
+									<!-- BEGIN VALIDATION STATES-->
+									<div class="portlet light portlet-fit portlet-form bordered">
+										<div class="portlet-body">
+
+											<!-- BEGIN FORM-->
+											<form id="registerEventForm">
+												<div class="form-body">
+													<div class="row">
+														<div class="col-md-8">
+															<div class="form-group form-md-line-input form-md-floating-label">
+																<input type="text" class="form-control" name="companyName" id="companyName">
+																<label for="companyName">Company name</label>
+																<span class="help-block">Required info</span>
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group form-md-line-input form-md-floating-label">
+																<input type="text" class="form-control" name="companyPhone" id="companyPhone">
+																<label for="companyPhone">Phone</label>
+																<span class="help-block">Include country and city code</span>
+															</div>
+														</div>
+														<div class="col-md-1">
+															<div class="form-group form-md-line-input form-md-floating-label">
+                                                                <span class="input-group-btn btn-green">
+                                                                    <button type="button" class="btn green-haze"> Add </button>
+                                                                </span>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-5">
+															<div class="form-group form-md-line-input form-md-floating-label">
+																<input type="text" class="form-control" name="contactName" id="contactName">
+																<label for="contactName">Contact name</label>
+																<span class="help-block">Required info</span>
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group form-md-line-input form-md-floating-label">
+																<input type="text" class="form-control" name="contactEmail" id="contactEmail">
+																<label for="contactEmail">Email</label>
+															</div>
+														</div>
+														<div class="col-md-3">
+															<div class="form-group form-md-line-input form-md-floating-label">
+																<input type="text" class="form-control" name="contactPhone" id="contactPhone">
+																<label for="contactPhone">Phone</label>
+																<span class="help-block">Include country and city code</span>
+															</div>
+														</div>
+														<div class="col-md-1">
+															<div class="form-group form-md-line-input form-md-floating-label">
+                                                                <span class="input-group-btn btn-green">
+                                                                    <button type="button" class="btn green-haze"> Add </button>
+                                                                </span>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-4">
+															<div class="form-group form-md-line-input form-md-floating-label">
+																<input type="text" class="form-control" name="internalRep" id="internalRep">
+																<label for="internalRep">Internal REP</label>
+																<span class="help-block">Required info</span>
+															</div>
+														</div>
+														<div class="col-md-8">
+															<div class="form-group form-md-checkboxes">
+																<label>Project type</label>
+																<div class="md-checkbox-inline">
+																	<div class="md-checkbox">
+																		<input type="checkbox" id="checkbox6" class="md-check">
+																		<label for="checkbox6">
+																		<span></span>
+																		<span class="check"></span>
+																		<span class="box"></span> Wedding </label>
+																	</div>
+																	<div class="md-checkbox">
+																		<input type="checkbox" id="checkbox7" class="md-check" checked>
+																		<label for="checkbox7">
+																		<span></span>
+																		<span class="check"></span>
+																		<span class="box"></span> Corporation </label>
+																	</div>
+																	<div class="md-checkbox">
+																		<input type="checkbox" id="checkbox8" class="md-check">
+																		<label for="checkbox8">
+																		<span></span>
+																		<span class="check"></span>
+																		<span class="box"></span> Multi-Participant </label>
+																	</div>
+																	<div class="md-checkbox">
+																		<input type="checkbox" id="checkbox9" class="md-check">
+																		<label for="checkbox9">
+																		<span></span>
+																		<span class="check"></span>
+																		<span class="box"></span> Personal </label>
+																	</div>
+																	<div class="md-checkbox">
+																		<input type="checkbox" id="checkbox10" class="md-check">
+																		<label for="checkbox10">
+																		<span></span>
+																		<span class="check"></span>
+																		<span class="box"></span> Retrieval </label>
+																	</div>
+																	<div class="md-checkbox">
+																		<input type="checkbox" id="checkbox11" class="md-check">
+																		<label for="checkbox11">
+																		<span></span>
+																		<span class="check"></span>
+																		<span class="box"></span> Commercial </label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<br/ >
+														<div class="form-group">
+															<div class="col-md-2">
+																<div class="form-group">
+																<label>Departure Country</label>
+																	<div class="input-group">
+																		<input type="text" id="depCountry" name="depCountry" class="form-control" placeholder="Write country's name "/>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																<label>Departure City</label>
+																	<div class="input-group">
+																		<input type="text" id="depCity" name="depCity" class="form-control" placeholder="Write city's name "/>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																<label>Delivery Country</label>
+																<div class="input-group">
+																	<input type="text" id="delCountry" name="delCountry" class="form-control" placeholder="Write country's name " />
+																</div>
+															</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																<label>Delivery City</label>
+																	<div class="input-group">
+																		<input type="text" id="delCity" name="delCity" class="form-control" placeholder="Write city's name " />
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<label>Delivery date</label>
+																	<div class="input-group">
+																		<input type="text" id="delDate" name="delDate" class="form-control" placeholder=" mm/dd/yy " />
+<!--
+																		<input class="form-control form-control-inline input-small date-picker" size="16" type="text" value=""
+																		 placeholder="Click to select"/>
+-->
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="form-group form-md-line-input form-md-floating-label">
+														<textarea class="form-control" name="memo" rows="4"></textarea>
+														<label for="form_control_1">Comment</label>
+														<span class="help-block">Short &amp; clear</span>
+													</div>
+												</div>
+
+												<div class="form-actions">
+													<div class="row">
+														<div class="col-md-12 actions">
+															<button type="button" class="btn green btn-default" data-toggle="modal" href="#confirm"
+																aria-labelledby="myModalLabel10" aria-hidden="true">
+																Submit </a>
+															<button type="button" class="btn btn-outline grey-salsa">Cancel</button>
+														</div>
+													</div>
+												</div>
+											</form>
+											<!-- END FORM-->
+										</div>
+									</div>
+									<!-- END VALIDATION STATES-->
+
+							</div>
+						</div>
+                        <!-- END PAGE CONTENT-->
+
+                        <div id="confirm" class="modal fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content scroller" style="height: 100%;" data-always-visible="1" data-rail-visible="0">
+									<div class="portlet light ">
+										<div class="portlet-title">
+											<div class="caption font-red-sunglo">
+												<i class="fa fa-gift font-red-sunglo"></i>
+												<span class="caption-subject uppercase bold">Project keycode</span>
+											</div>
+										</div>
+                                        <div style="height:60px" data-always-visible="1" data-rail-visible1="1">
+											<div class="row">
+												<div class="col-md-12">
+													<input type="text" class="form-control" value="301218 R REITSMA-Harley-Davidson-CBS">
+													<span style="font-size:14px; color:gray; ">Press "Submit" or edit if is neccesary</span>
+                                                </div>
+                                            </div>
+                                        </div>
+									</div>
+                                    <!-- END PORTLET-->
+                                    <div class="modal-footer">
+										<form action="global-information.php" class="login-form" method="post">
+											<button class="btn default" data-dismiss="modal" aria-hidden="true">Close</button>
+											<button type="button" class="btn green btn-default btn-sm" data-toggle="modal" aria-hidden="true">
+												Submit </a>
+										</form>
+                                    </div>
+                                    <!-- END PORTLET-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+
+
+{% endblock %}

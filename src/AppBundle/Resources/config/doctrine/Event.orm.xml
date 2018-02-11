@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Event" table="event">
+    <id name="idevent" type="integer" column="idevent">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="event_idevent_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="eventname" type="string" column="eventname" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="eventwedding" type="integer" column="eventwedding" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="eventcorporate" type="integer" column="eventcorporate" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="eventmultiparticipant" type="integer" column="eventmultiparticipant" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="eventpersonal" type="integer" column="eventpersonal" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="eventretrieval" type="integer" column="eventretrieval" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idinternalrep" type="integer" column="idinternalrep" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="iddeparturecountry" type="integer" column="iddeparturecountry" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="iddeparturecity" type="integer" column="iddeparturecity" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="iddeliverycountry" type="integer" column="iddeliverycountry" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="iddeliverycity" type="integer" column="iddeliverycity" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Phone" table="phone">
+    <indexes>
+      <index name="IDX_444F97DDFE94F394" columns="idcity"/>
+    </indexes>
+    <id name="idphone" type="integer" column="idphone">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="phone_idphone_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="number" type="string" column="number" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ext" type="string" column="ext" length="16" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idcity" target-entity="City" fetch="LAZY">
+      <join-columns>
+        <join-column name="idcity" referenced-column-name="idcity"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

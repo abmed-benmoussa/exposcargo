@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Nonconformityticket" table="nonconformityticket">
+    <indexes>
+      <index name="IDX_B63A40A2F0B78280" columns="idproject"/>
+    </indexes>
+    <id name="idnonconfticket" type="integer" column="idnonconfticket">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="nonconformityticket_idnonconfticket_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nonconformityticketnumber" type="string" column="nonconformityticketnumber" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="referencedetail" type="string" column="referencedetail" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ticketdate" type="date" column="ticketdate" nullable="false"/>
+    <field name="reporteridperson" type="integer" column="reporteridperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="causeanalisystype" type="string" column="causeanalisystype" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="analisysidperson" type="integer" column="analisysidperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="closeddate" type="date" column="closeddate" nullable="false"/>
+    <many-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

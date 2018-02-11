@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Location" table="location">
+    <indexes>
+      <index name="IDX_5E9E89CBD24A3DEF" columns="idaddress"/>
+      <index name="IDX_5E9E89CB50617CDA" columns="idperson"/>
+    </indexes>
+    <id name="idlocation" type="integer" column="idlocation">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="location_idlocation_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fullname" type="string" column="fullname" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="schedule" type="string" column="schedule" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="category" type="string" column="category" length="16" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="locationidcountry" type="integer" column="locationidcountry" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="locationidcity" type="integer" column="locationidcity" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="comments" type="string" column="comments" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idphone" type="integer" column="idphone" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idperson" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="idperson" referenced-column-name="idperson"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idaddress" target-entity="Address" fetch="LAZY">
+      <join-columns>
+        <join-column name="idaddress" referenced-column-name="idaddress"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

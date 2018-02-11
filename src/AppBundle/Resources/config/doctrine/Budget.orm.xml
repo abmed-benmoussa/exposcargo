@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Budget" table="budget">
+    <indexes>
+      <index name="IDX_73F2F77B856A684C" columns="parentid"/>
+      <index name="IDX_73F2F77BCF3084A3" columns="idbudgetcatalog"/>
+      <index name="IDX_73F2F77BF0B78280" columns="idproject"/>
+    </indexes>
+    <id name="idbudget" type="integer" column="idbudget">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="budget_idbudget_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="totalamount" type="decimal" column="totalamount" precision="10" scale="0" nullable="false"/>
+    <field name="spillover" type="integer" column="spillover" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="currencymoney" type="decimal" column="currencymoney" precision="10" scale="0" nullable="false"/>
+    <field name="prepaid" type="integer" column="prepaid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="paymentsnumber" type="integer" column="paymentsnumber" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="transportation" type="string" column="transportation" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idbudgetcatalog" target-entity="Budgetconcept" fetch="LAZY">
+      <join-columns>
+        <join-column name="idbudgetcatalog" referenced-column-name="idbudgetconcept"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="parentid" target-entity="Budget" fetch="LAZY">
+      <join-columns>
+        <join-column name="parentid" referenced-column-name="idbudget"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

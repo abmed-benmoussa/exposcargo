@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Messages" table="messages">
+    <indexes>
+      <index name="IDX_DB021E96F0B78280" columns="idproject"/>
+    </indexes>
+    <id name="idmessage" type="integer" column="idmessage">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="messages_idmessage_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="timecreated" type="datetime" column="timecreated" nullable="false"/>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sendidperson" type="integer" column="sendidperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="reciveidperson" type="integer" column="reciveidperson" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="message" type="string" column="message" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idtask" type="integer" column="idtask" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idproject" target-entity="Project" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproject" referenced-column-name="idproject"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

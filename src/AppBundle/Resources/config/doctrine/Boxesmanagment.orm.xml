@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Boxesmanagment" table="boxesmanagment">
+    <indexes>
+      <index name="IDX_22289D161BF4DEF0" columns="idboxes"/>
+    </indexes>
+    <id name="idboxesmanagment" type="integer" column="idboxesmanagment">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="boxesmanagment_idboxesmanagment_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="clientrefer" type="integer" column="clientrefer" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="carrierpickup" type="integer" column="carrierpickup" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="returnboxes" type="integer" column="returnboxes" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="customservicesrefer" type="integer" column="customservicesrefer" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="consolidator" type="integer" column="consolidator" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idboxes" target-entity="Boxes" fetch="LAZY">
+      <join-columns>
+        <join-column name="idboxes" referenced-column-name="idboxes"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
