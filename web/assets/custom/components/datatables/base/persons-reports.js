@@ -1,12 +1,12 @@
 //== Class definition
-
+var datatable ;
 var DatatableResponsiveColumnsDemo = function () {
 	//== Private functions
 
 	// basic demo
 	var demo = function () {
 
-		var datatable = $('.m_datatable').mDatatable({
+		 datatable = $('.m_datatable').mDatatable({
 			// datasource definition
 			data: {
 				type: 'remote',
@@ -43,7 +43,7 @@ var DatatableResponsiveColumnsDemo = function () {
 
 			search: {
                             onEnter: true,
-                            input: $('#generalSearch')
+                   
                             
                            
 			},
@@ -80,6 +80,7 @@ var DatatableResponsiveColumnsDemo = function () {
                                 sortable: false, // disable sort for this column
                                 width: 150,
                             },
+                            
 			] 
 		});
 	};
@@ -88,10 +89,23 @@ var DatatableResponsiveColumnsDemo = function () {
 		// public functions
 		init: function () {
 			demo();
+
+                  
 		}
 	};
 }();
 
 jQuery(document).ready(function () {
 	DatatableResponsiveColumnsDemo.init();
+        
+                         $('#generalSearch').on('keyup', function(e) {
+            
+                        datatable.search($(this).val(),'generalSearch');
+                        //datatable.reload();
+                        });
+                    $('#statusperson').on('change', function(e) {
+                         alert('ici')
+                        datatable.search($(this).val(),'statusperson');
+                        //datatable.reload();
+                        });
 });
