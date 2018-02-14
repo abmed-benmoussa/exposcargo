@@ -170,7 +170,7 @@ class Project
     /**
      * @var \AppBundle\Entity\Person
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person",fetch="EAGER",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="internalrepidperson", referencedColumnName="idperson")
      * })

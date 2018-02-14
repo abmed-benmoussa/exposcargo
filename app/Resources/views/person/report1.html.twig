@@ -42,7 +42,7 @@
                         <div>
                             <span class="m-subheader__daterange" >
                                 <span class="m-subheader__daterange-label">
-                             
+
                                     <span class="m-subheader__daterange-title"></span>
                                     <span class="m-subheader__daterange-date m--font-brand"></span>
                                 </span>
@@ -95,32 +95,32 @@
                                                     </li>
                                                     <li>
                                                         <label style="padding-top:10px;">Type</label>
-                                                        <select class="bs-select form-control">
-                                                            <option>Corporate</option>
-                                                            <option>Personal</option>
+                                                        <select id="persontype"    class="bs-select form-control">
+                                                            <option value="1">Corporate</option>
+                                                            <option value="2">Personal</option>
                                                         </select>
                                                     </li>
                                                     <li>
                                                         <label style="padding-top:10px;">Financial category </label>
-                                                        <select class="bs-select form-control">
-                                                            <option>A</option>
-                                                            <option>B </option>
-                                                            <option>C </option>
-                                                            <option>D</option>
+                                                        <select id="financialcategory"   class="bs-select form-control">
+                                                            <option value="1">A</option>
+                                                            <option value="2">B </option>
+                                                            <option value="3">C </option>
+                                                            <option value="4">D</option>
                                                         </select>
                                                     </li>
                                                     <li>
                                                         <label style="padding-top:10px;">Financial behavior </label>
-                                                        <select class="bs-select form-control">
-                                                            <option>Bench player</option>
-                                                            <option>Detractor </option>
-                                                            <option>Preacher </option>
-                                                            <option>Promoter</option>
+                                                        <select  id="behaivorcategory"  class="bs-select form-control">
+                                                            <option value="1" >Bench player</option>
+                                                            <option value="2">Detractor </option>
+                                                            <option value="3">Preacher </option>
+                                                            <option value="4">Promoter</option>
                                                         </select>
                                                     </li>
                                                     <li>
                                                         <label style="padding-top:10px;">Country</label>
-                                                        <select name="country" class="form-control m-input m-input--air">
+                                                        <select id="country"  name="country" class="form-control m-input m-input--air">
                                                             <option value="Select"> Select </option>
                                                             <option value="AF"> Afghanistan </option>
                                                             <option value="AX"> Åland Islands </option>
@@ -375,29 +375,30 @@
                                                     </li>
                                                     <li>
                                                         <label style="padding-top:10px;">Type event</label>
-                                                        <select class="bs-select form-control">
-                                                            <option>Corporation</option>
-                                                            <option>Commercial</option>
-                                                            <option>Multi-participant</option>
-                                                            <option>Personal</option>
-                                                            <option>Retrieval</option>
-                                                            <option>Wedding</option>
+                                                        <select id="eventtype"  class="bs-select form-control">
+                                                            <option value="1">Corporation</option>
+                                                            <option value="2">Commercial</option>
+                                                            <option value="3">Multi-participant</option>
+                                                            <option value="4">Personal</option>
+                                                            <option value="5">Retrieval</option>
+                                                            <option value="6">Wedding</option>
                                                         </select>
                                                     </li>
                                                     <li>
+
                                                         <label style="padding-top:10px;">Status project</label>
-                                                        <select class="bs-select form-control">
-                                                            <option>Canceled</option>
-                                                            <option>Consult</option>
-                                                            <option>Finished</option>
-                                                            <option>Prospection</option>
-                                                            <option>Running</option>
+                                                        <select id="status_project" class="bs-select form-control">
+                                                            <option value="1">Canceled</option>
+                                                            <option value="2">Consult</option>
+                                                            <option value="3" >Finished</option>
+                                                            <option value="4">Prospection</option>
+                                                            <option value="5">Running</option>
                                                         </select>
                                                     </li>
                                                     <li>
                                                         <div class="form-group">
                                                             <label style="padding-top:10px;">By representative</label>
-                                                            <input type="text" class="form-control" placeholder="">
+                                                            <input type="text" class="form-control" placeholder="" id="representative">
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -414,7 +415,7 @@
                                             <table class="m_datatable" id="html_table" width="100%">
                                                 <thead>
                                                     <tr>
-                                              
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -430,7 +431,7 @@
                                                         </tr>
                                                        
                                                     {% endfor %}#}
-                                                    
+
                                                 </tbody>
                                             </table>
                                             <!--end: Datatable -->

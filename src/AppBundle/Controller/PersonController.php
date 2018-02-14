@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * Person controller.
@@ -42,11 +43,10 @@ class PersonController extends Controller {
      */
     public function reportAction() {
 
-
         $em = $this->getDoctrine()->getManager();
-
         //$peoples = $em->getRepository('AppBundle:Person')->findAll();
         //var_dump($peoples);die;
+
         return $this->render('person/report1.html.twig', array(
                         //'peoples' => $peoples,
         ));
@@ -61,43 +61,86 @@ class PersonController extends Controller {
     public function jsonreportAction(Request $request) {
 
         $page = $request->query->get('datatable')['pagination']['page'];
-        
+
         $perpage = $request->query->get('datatable')['pagination']['perpage'];
-        
-         $generalSearch = "" ;
-         
-        if ($request->query->get('datatable')['query'])
-        {
-          
-            if ($request->query->get('datatable')['query']['generalSearch'])
-                $generalSearch = $request->query->get('datatable')['query']['generalSearch'];
+
+        if ($request->query->get('datatable')['query']) {
+
+            $statusperson = $request->query->get('datatable')['query']['statusperson'];
+
+            $generalSearch = $request->query->get('datatable')['query']['generalSearch'];
+
+            $range = $request->query->get('datatable')['query']['range'];
+
+            $behaivorcategory = $request->query->get('datatable')['query']['behaivorcategory'];
+
+            $financialcategory = $request->query->get('datatable')['query']['financialcategory'];
+
+            $persontype = $request->query->get('datatable')['query']['persontype'];
+
+            $status_project = $request->query->get('datatable')['query']['status_project'];
+
+            $eventtype = $request->query->get('datatable')['query']['eventtype'];
+
+            $country = $request->query->get('datatable')['query']['country'];
         }
-            
+
+
 
         $em = $this->getDoctrine()->getManager();
-
         $repository = $this->getDoctrine()->getRepository(Person::class);
-
         $qb = $repository->createQueryBuilder('p');
+        $qb->leftJoin('AppBundle:Project', 'pr', 'WITH', 'pr.internalrepidperson = p.idperson');
+        $qb->leftJoin('AppBundle:Location', 'v', 'WITH', 'pr.deliveryidlocation = v.idlocation');
+        $qb->Where('1 = 1');
 
-        $qb->Where(' p.fullname LIKE :generalSearch ');
+        if (strlen($range) >= 23) {
+
+            $xrfec1 = substr($range, 0, 10);
+            $xrfec2 = substr($range, 13, 10);
+            $xrfec1 = substr($xrfec1, 6, 4) . "-" . substr($xrfec1, 0, 2) . "-" . substr($xrfec1, 3, 2);
+            $xrfec2 = substr($xrfec2, 6, 4) . "-" . substr($xrfec2, 0, 2) . "-" . substr($xrfec2, 3, 2);
+            $qb->andWhere("pr.deliverydate BETWEEN '" . $xrfec1 . "' AND '" . $xrfec2 . "'");
+        }
+        if ($statusperson != "") {
+            $qb->andWhere("p.status = :statusperson");
+            $qb->setParameter(':statusperson', $statusperson);
+        }
+        if ($behaivorcategory != "") {
+
+            $qb->andWhere("p.behaivorcategory = :behaivorcategory");
+            $qb->setParameter(':behaivorcategory', $behaivorcategory);
+        }
+        if ($financialcategory != "") {
+
+            $qb->andWhere("p.financialcategory = :financialcategory");
+            $qb->setParameter(':financialcategory', $financialcategory);
+        }
+        if ($persontype != "") {
+
+            $qb->andWhere("p.type = :persontype");
+            $qb->setParameter(':persontype', $persontype);
+        }
+        if ($status_project != "") {
+
+            $qb->andWhere("pr.status = :statusp");
+            $qb->setParameter(':statusp', $status_project);
+        }
+        if ($eventtype != "") {
+
+            $qb->andWhere("pr.eventtype = :eventtype");
+            $qb->setParameter(':eventtype', $eventtype);
+        }
+        if ($generalSearch != "") {
+
+            $qb->andWhere("p.fullname LIKE :generalSearch");
+            $qb->setParameter(':generalSearch', '%' . $generalSearch . '%');
+        }
         
-       
-        $qb->setParameter('generalSearch','%'.$generalSearch.'%');
-          
-
-        $query = $qb->getQuery();
-
-        $query->setFirstResult(($page - 1) * $perpage)->setMaxResults($perpage);
-
-        $results = new \Doctrine\ORM\Tools\Pagination\Paginator($query, $fetchJoinCollection = true);
-
-        $persons = $results->getQuery()->getResult();
-
+        $qb->setFirstResult(($page - 1) * $perpage)->setMaxResults($perpage);
+        $persons = new Paginator($qb->getQuery(),$fetchJoinCollection  = true);
         $response = array();
-
         $data = array();
-
         foreach ($persons as $person) {
             $data [] = array(
                 'fullname' => $person->getFullname(),
@@ -106,74 +149,16 @@ class PersonController extends Controller {
                 'email' => $person->getEmail(),
             );
         }
-
         $response = array(
             "meta" => array(
                 "page" => $page,
-                "pages" => count($results->getQuery()->getResult()),
+                "pages" => count($persons->getQuery()->getResult()),
                 "perpage" => $perpage,
-                "total" => count($results)
+                "total" => count($persons)
             ),
             "data" => $data
         );
-
         return new JsonResponse($response);
-        /*
-          $xrfec = $request->request->get('reportrange', '');
-          $xmonth = $request->request->get('month', '0');
-          $xweek = $request->request->get('week', '0');
-          $xwarehousedate = $request->request->get('m_warewhousedate', '');
-          $xdocumentsdate = $request->request->get('m_documentsdate', '');
-          $xtev = $request->request->get('typeevent', '0');
-          $xstatusproject = $request->request->get('statusproject', '0');
-          $xvenue = $request->request->get('venue', '');
-          $xplace = $request->request->get('place', '');
-          $xintrep = $request->request->get('internalrep', '');
-
-          if (strlen($xwarehousedate) >= 10)
-          $xwarehousedate0 = substr($xwarehousedate, 6, 4) . "-" . substr($xwarehousedate, 0, 2) . "-" . substr($xwarehousedate, 3, 2);
-          if (strlen($xdocumentsdate) >= 10)
-          $xdocumentsdate0 = substr($xdocumentsdate, 6, 4) . "-" . substr($xdocumentsdate, 0, 2) . "-" . substr($xdocumentsdate, 3, 2);
-
-          if (strlen($xrfec) >= 23)
-          {
-          $xrfec1 = substr($xrfec, 0, 10);
-          $xrfec2 = substr($xrfec, 13, 10);
-          $xrfec1 = substr($xrfec1, 6, 4) . "-" . substr($xrfec1, 0, 2) . "-" . substr($xrfec1, 3, 2);
-          $xrfec2 = substr($xrfec2, 6, 4) . "-" . substr($xrfec2, 0, 2) . "-" . substr($xrfec2, 3, 2);
-          }
-
-          $em = $this->getDoctrine()->getManager();
-
-          //        $projects = $em->getRepository('AppBundle:Project')->findAll();
-
-          $repository = $this->getDoctrine()->getRepository(Project::class);
-
-          $qb = $repository->createQueryBuilder('p');
-          $qb->innerJoin('AppBundle:Person', 'u', 'WITH', 'p.internalrepidperson = u.idperson');
-          $qb->innerJoin('AppBundle:Location', 'v', 'WITH', 'p.deliveryidlocation = v.idlocation');
-          $qb->innerJoin('AppBundle:Location', 'l', 'WITH', 'p.deliveryidlocation = l.idlocation');
-          //innerJoin($join, $alias, $conditionType = null, $condition = null, $indexBy = null)
-
-          $qb->Where('1 = 1');
-
-
-          if ( strlen($xrfec) >= 23)
-          {
-          // 12/19/2017 - 12/19/2017
-          // 2017-04-01 - 2017-04-22
-
-          $qb->andWhere("p.deliverydate BETWEEN '" . $xrfec1 . "' AND '" . $xrfec2 . "'");
-          //$qb->andWhere('p.deliverydate BETWEEN :xdate1 AND :xdate2');
-          //$qb->setParameter(':xdate1', $xrfec1);
-          //$qb->setParameter(':xdate2', $xrfec2);
-          }
-
-
-          //var_dump($people);die;
-          return $this->render('person/report1.html.twig', array(
-          'projects' => $people,
-          )); */
     }
 
     /**
